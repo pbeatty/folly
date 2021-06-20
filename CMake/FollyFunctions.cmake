@@ -269,11 +269,11 @@ function(folly_define_tests)
     if (
       1
       # TODO: Use IN_LIST after cmake 3.3
-      AND (test_${cur_test}_tag MATCHES "\\bBROKEN\\b" OR BUILD_BROKEN_TESTS)
-      AND (test_${cur_test}_tag MATCHES "\\bSLOW\\b" OR BUILD_SLOW_TESTS)
-      AND (test_${cur_test}_tag MATCHES "\\bHANGING\\b" OR BUILD_HANGING_TESTS)
-      AND (test_${cur_test}_tag MATCHES "\\bWINDOWS_DISABLED\\b" OR NOT WIN32)
-      AND (test_${cur_test}_tag MATCHES "\\bAPPLE_DISABLED\\b" OR NOT APPLE)
+      AND (NOT(test_${cur_test}_tag MATCHES "BROKEN") OR BUILD_BROKEN_TESTS)
+      AND (NOT(test_${cur_test}_tag MATCHES "SLOW") OR BUILD_SLOW_TESTS)
+      AND (NOT(test_${cur_test}_tag MATCHES "HANGING") OR BUILD_HANGING_TESTS)
+      AND (NOT(test_${cur_test}_tag MATCHES "WINDOWS_DISABLED") OR NOT WIN32)
+      AND (NOT(test_${cur_test}_tag MATCHES "APPLE_DISABLED") OR NOT APPLE)
     )
       set(cur_test_name ${test_${cur_test}_name})
       set(cur_dir_name ${directory_${test_${cur_test}_directory}_name})
