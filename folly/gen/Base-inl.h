@@ -2713,7 +2713,9 @@ constexpr detail::Indirect indirect{};
 
 constexpr detail::Unwrap unwrap{};
 
-constexpr detail::ToVirtualGen virtualize{};
+// removing due to: getting compilation error:
+// error: 'constexpr folly::gen::Operator<Self>::Operator() [with Self = folly::gen::detail::ToVirtualGen]' is protected within this context
+//constexpr detail::ToVirtualGen virtualize{};
 
 template <class Number>
 inline detail::Take take(Number count) {
